@@ -15,7 +15,20 @@ Svi smo svjesni opadanja BiH ekonomije zbog nedovoljnog interesa za naše vlasti
 **387 Proizvodi** je platforma namijenjena kako potrošaćima da dobiju informacije o domaćim proizvodima tako i proizvođačima da unesu svoj proizvod te informacije o istom u bazu proizvoda. Uz pomoć ove platforme, proizvođaći domaćih proizvoda će dobiti priliku za promociju svojih prizvoda, a potrošaći će moći, bez ikakvih nedoumica, odlučiti se za korišenje domaćih prizvoda, i tako poboljšati našu nestabilnu ekonomiju. 
 
 #### Procesi:
- *coming soon*
+Registracija proizvodaca:
+-Proizvodaci domacih proizvoda ce se moci registrovati, a administratori ce voditi racuna o tome da li se zapravo radi od domacem proizvodacu. Ako jeste, onda se u bazi podataka dodaje dati proizvodac, ako nije onda se nalog za unos u bazu ignoriše.
+
+Dodavanje novih proizvoda/ažuriranje proizvoda:
+-Omogucava registrovanim proizvodacima da svoj novi proizvod dodaju u bazu podataka, te da izvrše izmjene nad vec postojecim proizvodima.
+
+Obavijesti:
+-Korisnik(potrosac) ce uvijek biti obavješten pri pojavi novog proizvoda.
+
+Dobivanje željenih informacija:
+-Korisnik u svakom trenutku može dobiti informaciju koja ga interesuje, bilo vezana za proizvod ili proizvodaca.
+
+Pretraga:
+-Korisnici mogu pretraživati proizvode po kategorijama i nazivu.
 
 #### Funkcionalnosti:
 - Za administratora:

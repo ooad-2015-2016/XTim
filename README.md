@@ -32,6 +32,7 @@ Svi smo svjesni opadanja BiH ekonomije zbog nedovoljnog interesa za naše vlasti
   - Dodavati obavijesti
   - Pregledati recenzije svojih proizvoda
   - Odgovarati na pitanja
+  - Podrska barcode scanneru
 
 - Za registrovane korisnike:
   - Gledati katalog proizvoda i proizvođača

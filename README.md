@@ -2,12 +2,12 @@
 
 X-Tim
 
-Clanovi Tima:
+**Clanovi Tima:**
 
-1. Belmin Mustajbasic
-2. Kemal Halilbegovic
-3. Benjamin Hrustemovic
-4. Haris Halilovic
+ - Belmin Mustajbasic
+ - Kemal Halilbegovic
+ - Benjamin Hrustemovic
+ - Haris Halilovic
 
 ## Projekat: 387 Proizvodi
 

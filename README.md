@@ -1,5 +1,7 @@
 # XTim
 
+![Logo](http://i.imgur.com/VV8nEmX.png)
+
 X-Tim
 
 **Clanovi Tima:**

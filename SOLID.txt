@@ -1,0 +1,8 @@
+1.Princip pojedinacne odgovornosti ( eng. Single Responsibility Principle-SRP)
+
+------>KLASA BI TREBALA IMATI SAMO JEDAN RAZLOG ZA PROMJENU.<------------------
+Svaka klasa u nasem dijagramu klasa sastoji se uglavnom iz gettera/settera i nekih najosnovnijih metoda
+bez kojih ne bi funkcionisala, bilo koja druga metoda bi bila odvojena u vlastiti interfejs 
+(primjer za to je klasa Proizvodjac, koja implementira interfejs IUredjivanjeProizvoda gdje se nalazi, izmedju ostalog, 
+i pretraga proizvodjaca, koja kao metoda moze biti podlozna promjenama)
+Naš dijagram klasa ISPUNJAVA princip pojedinacne odgovornosti.

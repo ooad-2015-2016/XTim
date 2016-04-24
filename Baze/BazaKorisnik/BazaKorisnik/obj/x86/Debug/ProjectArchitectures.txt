@@ -1,0 +1,1 @@
+c:\Users\Belmin\Documents\Visual Studio 2015\Projects\BazaKorisnik\BazaKorisnik\BazaKorisnik.csproj;x86

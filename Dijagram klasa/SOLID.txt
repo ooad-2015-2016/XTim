@@ -23,6 +23,11 @@ Zaključujemo da je OCP ispoštovan.
 
 3. Liskov princip zamjene /  Liskov Substitution Principle (LSP)
 
+PODTIPOVI MORAJU BITI ZAMJENJIVI NJIHOVIM OSNOVNIM TIPOVIMA
+
+U nasem dijagramu klasa nema nasljeđivanja tako da je Liskov princip ISPUNJEN.
+Ne postoje dvije klase (takve da je jedna nasljeđena iz druge) takve da njihova zamjena moze dovesti do narusavanja Liskovog principa.
+
 ------------------------------------------------------------------------
 
 4.Princip inverzije ovisnosti / Dependency Inversion Principle (DIP)

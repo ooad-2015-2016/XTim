@@ -1,0 +1,35 @@
+1.Princip pojedinacne odgovornosti / Single Responsibility Principle (SRP)
+
+KLASA BI TREBALA IMATI SAMO JEDAN RAZLOG ZA PROMJENU.
+
+Svaka klasa u nasem dijagramu klasa sastoji se uglavnom iz gettera/settera i nekih najosnovnijih metoda
+bez kojih ne bi funkcionisala, bilo koja druga metoda bi bila odvojena u vlastiti interfejs 
+(primjer za to je klasa Proizvodjac, koja implementira interfejs IUredjivanjeProizvoda gdje se nalazi, izmedju ostalog, 
+i pretraga proizvodjaca, koja kao metoda moze biti podlozna promjenama)
+Naš dijagram klasa ISPUNJAVA princip pojedinacne odgovornosti.
+
+------------------------------------------------------------------------
+
+2.Otvoreno zatvoren princip / Open Closed Principle (OCP)
+
+------------------------------------------------------------------------
+
+3. Liskov princip zamjene /  Liskov Substitution Principle (LSP)
+
+------------------------------------------------------------------------
+
+4.Princip inverzije ovisnosti / Dependency Inversion Principle (DIP)
+
+A. MODULI VISOKOG NIVOA NE BI TREBALI OVISITI OD MODULA NISKOG NIVOA. OBA BI TREBALO DA OVISE OD APSTRAKCIJA.
+
+B. MODULI NE BI TREBALI OVISITI OD DETALJA. DETALJI BI TREBALI BITI OVISNI OD APSTRAKCIJA
+
+Princip inverzije ovisnosti kaže da konkretne klase trebaju da se nasljeduju samo iz apstrktnih klasa jer se one mnogoi rijede mijenjaju od konkretnih klasa pa s toga naša klasa ima mnogo manje razloga za promjene. S obzirom da mi nemamo nasljedivanja medu klasama DIP je ispoštovan.
+
+------------------------------------------------------------------------
+
+5.Princip izoliranja interfejsa / Interface Segregation Principle (ISP)
+
+KLIJENTI NE TREBA DA OVISE O METODAMA KOJE NECE UPOTREBLJAVATI
+
+Klasa ne treba da ovisi o metodama koje korisnih nece koristiti jer takve metode cine klasu nepotrebno komplikovanom i velikom. Mi smo se trudili da klase budu što jednostavnije tako da one sadrže vecinom gettere/settere i ponegdje neku blisko vezanu metodu. Uzimajuci to u obzir ISP je ispoštovan.

@@ -1,4 +1,4 @@
-1.Princip pojedinacne odgovornosti / Single Responsibility Principle (SRP)
+﻿1.Princip pojedinacne odgovornosti / Single Responsibility Principle (SRP)
 
 KLASA BI TREBALA IMATI SAMO JEDAN RAZLOG ZA PROMJENU.
 
@@ -11,6 +11,13 @@ Naš dijagram klasa ISPUNJAVA princip pojedinacne odgovornosti.
 ------------------------------------------------------------------------
 
 2.Otvoreno zatvoren princip / Open Closed Principle (OCP)
+
+ENTITETI SOFTVERA (KLASE, MODULI, FUNKCIJE) TREBALI BI BITI OTVORENI ZA NADOGRADNJU, ALI ZATVORENI ZA MODIFIKACIJE.
+
+Pošto se svaka klasa sastoji samo od najosnovnijih metoda koje su joj potrebne za funkcionisanje, 
+nijedna od klasa koja bi bila izvedena iz nje ne bi mogla forsirati promjenu implementacije bazne klase. 
+Isto tako, pošto bazna klasa sadrzi samo najosnovnije metode, moguće su brojne nadogradnje.
+Zaključujemo da je OCP ispoštovan.
 
 ------------------------------------------------------------------------
 

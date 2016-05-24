@@ -39,8 +39,40 @@ namespace Korpa387.Controllers
 
         public ActionResult Login()
         {
+            ViewBag.err = "";
             return View();
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(string email, string password)
+        {
+            var korisnici = db.Korisnici.Where(p=>p.Email == email).ToList();
+            var err = "";
+            if(korisnici.Count != 1)
+            {
+                err = "Neispravan email";
+            }
+            else
+            {
+                if(korisnici[0].Password != password)
+                {
+                    err = "Neispravna lozinka";
+                }
+                else
+                {
+                    Session["LoggedUser"] = korisnici[0];
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            ViewBag.err = err;
+            return View();
+        }
+        public ActionResult LogOff()
+        {
+            Session["LoggedUser"] = null;
+            return RedirectToAction("Login", "Home");
+        }
+
 
         public ActionResult Contact()
         {

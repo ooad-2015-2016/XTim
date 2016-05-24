@@ -124,5 +124,36 @@ namespace Korpa387.Controllers
             }
             base.Dispose(disposing);
         }
+        [HttpPost]
+        public ActionResult Pretraga(string pretraga)
+        {
+            pretraga = pretraga.ToLower();
+            var proizvodjaci = db.Proizvodjaci.ToList();
+            if(!String.IsNullOrEmpty(pretraga) && pretraga.Length < 32)
+            {
+                var svi = proizvodjaci.Where(s => s.Naziv.ToLower().Contains(pretraga));
+                ViewBag.rezultati = svi;
+                ViewBag.pojam = pretraga;
+            }
+            else if(pretraga.Length >= 32)
+            {
+                ViewBag.rezultati = proizvodjaci;
+                ViewBag.pojam = "Predug pojam(max 32)";
+            }
+            else
+            {
+                ViewBag.rezultati = proizvodjaci;
+                ViewBag.pojam = "";
+            }
+            return View();
+        }
+        public ActionResult Pretraga()
+        {
+            var proizvodjaci = db.Proizvodjaci.ToList();
+            ViewBag.rezultati = proizvodjaci;
+            ViewBag.pojamPretrage = "";
+            return View();
+        }
+
     }
 }

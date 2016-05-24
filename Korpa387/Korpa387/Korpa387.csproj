@@ -294,6 +294,8 @@
     <Content Include="Views\Recenzija\Edit.cshtml" />
     <Content Include="Views\Recenzija\Index.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Proizvodjac\Pretraga.cshtml" />
+    <Content Include="Views\Proizvod\Pretraga.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

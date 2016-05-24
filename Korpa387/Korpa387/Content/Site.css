@@ -35,3 +35,14 @@ body {
 .marginDown {
     margin-bottom:25px;
 }
+.pretragaK {
+    border-radius:2px;
+    padding: 5px 20px;
+}
+input[type="search"].pretregaP {
+    margin:0;
+    border-bottom:0;
+}
+input[type="search"].pretregaP:focus {
+    border-bottom:0;
+}

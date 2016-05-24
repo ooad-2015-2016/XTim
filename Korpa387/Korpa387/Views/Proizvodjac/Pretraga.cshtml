@@ -1,9 +1,7 @@
-﻿@model IEnumerable<Korpa387.Models.Proizvod>
-
+﻿
 @{
-    ViewBag.Title = "Svi Proizvodi";
+    ViewBag.Title = "Pretraga";
 }
-
 <nav class="blue darken-2  hide-on-med-and-down marginDown">
     <div class="nav-wrapper">
         <ul class="left">
@@ -14,29 +12,28 @@
         </ul>
     </div>
 </nav>
-
 <div class="container">
-    @using (Html.BeginForm("Pretraga", "Proizvod", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "", role = "form" }))
+    @using (Html.BeginForm("Pretraga", "Proizvodjac", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "", role = "form" }))
     {
         <div class="row">
             <div class="col s12 m10 offset-m1 l10 offset-l1 white pretragaK">
-                @Html.TextBox("pretraga", "", new { @class = "pretregaP", @type = "search", @name = "pretraga", @placeholder = "Unesite pojam za pretragu" })
+                @Html.TextBox("pretraga","", new { @class = "pretregaP", @type = "search", @name = "pretraga", @value = ViewBag.pojam, @placeholder = "Unesite pojam za pretragu"})
             </div>
         </div>
     }
-
     <div class="row">
         <ul class="col collection with-header s12 m10 offset-m1 l10 offset-l1 noPadding">
-            <li class="collection-header"><h4>@ViewBag.Title</h4></li>
-            @foreach (var item in ViewBag.proizvodi)
+            <li class="collection-header"><h4>@ViewBag.Title za: @ViewBag.pojam</h4></li>
+            @foreach (var item in ViewBag.rezultati)
             {
                 <li class="collection-item avatar">
                     <i class="material-icons circle">folder</i>
-                    <span class="title"><a href="Proizvodjac/Details/@item.ID">@item.Naziv</a></span>
+                    <span class="title"><a href="Details/@item.ID">@item.Naziv</a></span>
                     <p>
-                        @item.Proizvodjac.Naziv <br>
+                        @item.Lokacija <br>
                         @item.Opis
                     </p>
+                    <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
                 </li>
             }
         </ul>

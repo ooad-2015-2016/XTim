@@ -15,24 +15,31 @@
 </nav>
 <div class="container">
     <div class="row">
-        <div class="col noPadding s12 m8 offset-m2 l8 offset-l2 white">
+        <div class="col noPadding s12 m8 offset-m2 l8 offset-l2 white" style="padding-top:25px;">
             
             <center>
                 <h4>Unesite vaše podatke:</h4>
             </center>
-            <form method="post" onsubmit="return false;">
+            @using (Html.BeginForm("Login", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
                 <div class="input-field col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-                    <input id="email" type="email" class="validate">
+                    
+                    @Html.TextBox("email", "", new { @class = "validate", @type = "email", @name = "email" })
                     <label for="email">Email</label>
                 </div>
                 <div class="input-field col s10 offset-s1 m8 offset-m2 l8 offset-l2">
-                    <input id="password" type="password" class="validate">
+                    @Html.Password("password","", new { @class = "validate", @name = "password"})
                     <label for="password">Lozinka</label>
                 </div>
-                <div class="input-field col s10 offset-s1 m8 offset-m2 l8 offset-l2 marginDown">
+                <div class="input-field col s10 offset-s1 m8 offset-m2 l8 offset-l2 ">
                     <input type="submit" name="submit" value="Prijava" class="waves-effect waves-light btn right blue darken-4" />
                 </div>
-            </form>
+                <div class="input-field col s10 offset-s1 m8 offset-m2 l8 offset-l2 marginDown">
+                    <p>@ViewBag.err</p>
+                </div>
+                
+            }
         </div>
     </div>
 </div>

@@ -18,8 +18,40 @@ namespace Korpa387.Controllers
         // GET: Proizvod
         public ActionResult Index()
         {
-            var proizvodi = db.Proizvodi.Include(p => p.Proizvodjac);
-            return View(proizvodi.ToList());
+            var proizvodi = db.Proizvodi.Include(p => p.Proizvodjac).ToList();
+            ViewBag.proizvodi = proizvodi;
+            return View();
+        }
+
+        public ActionResult Pretraga()
+        {
+            var proizvodi = db.Proizvodi.Include(p => p.Proizvodjac).ToList();
+            ViewBag.proizvodi = proizvodi;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Pretraga(string pretraga)
+        {
+            pretraga = pretraga.ToLower();
+            var proizvodi = db.Proizvodi.Include(p => p.Proizvodjac).ToList();
+            if (!String.IsNullOrEmpty(pretraga) && pretraga.Length < 32)
+            {
+                var svi = proizvodi.Where(s => s.Naziv.ToLower().Contains(pretraga));
+                ViewBag.proizvodi = svi;
+                ViewBag.pojam = pretraga;
+            }
+            else if (pretraga.Length >= 32)
+            {
+                ViewBag.proizvodi = proizvodi;
+                ViewBag.pojam = "Predug pojam(max 32)";
+            }
+            else
+            {
+                ViewBag.proizvodi = proizvodi;
+                ViewBag.pojam = "";
+            }
+            return View();
         }
 
         // GET: Proizvod/Details/5

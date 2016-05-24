@@ -15,11 +15,11 @@
 <body class="blue">
         <ul class="side-nav fixed">
             <li><img src="~/Images/logo.png" class="side-nav-logo" /></li>
-            <li class="bold">@Html.ActionLink("Početna", "Home")</li>
-            <li class="bold">@Html.ActionLink("Proizvodi", "/Proizvod")</li>
-            <li class="bold">@Html.ActionLink("Proizvođači", "Proizvodjac")</li>
-            <li class="bold">@Html.ActionLink("Ponude", "Index")</li>
-            <li class="bold">@Html.ActionLink("Kontakt", "Proizvodjac")</li>
+            <li class="bold">@Html.ActionLink("Početna", "Index", "Home")</li>
+            <li class="bold">@Html.ActionLink("Proizvodi", "Index", "Proizvod")</li>
+            <li class="bold">@Html.ActionLink("Proizvođači", "Index" ,"Proizvodjac")</li>
+            <li class="bold">@Html.ActionLink("Ponude", "Index", "Home")</li>
+            <li class="bold">@Html.ActionLink("Kontakt", "Index", "Proizvodjac")</li>
             
         </ul>
     <main class="">
@@ -29,10 +29,10 @@
                     <li><img src="~/Images/logo.png" class="side-nav-logo" /></li>
                     @Html.Partial("_LoginPartial")
                     <li class="bold">@Html.ActionLink("Početna", "Index", "Home")</li>
-                    <li class="bold">@Html.ActionLink("Proizvodi", "Proizvod", "Home")</li>
-                    <li class="bold">@Html.ActionLink("Proizvođači", "Proizvodjac", "Home")</li>
+                    <li class="bold">@Html.ActionLink("Proizvodi", "Index", "Proizvod")</li>
+                    <li class="bold">@Html.ActionLink("Proizvođači", "Index", "Proizvodjac")</li>
                     <li class="bold">@Html.ActionLink("Ponude", "Index", "Home")</li>
-                    <li class="bold">@Html.ActionLink("Kontakt", "Proizvodjac", "Home")</li>
+                    <li class="bold">@Html.ActionLink("Kontakt", "Index", "Proizvodjac")</li>
                 </ul>
             </nav>
             @RenderBody()

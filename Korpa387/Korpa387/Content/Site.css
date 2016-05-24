@@ -1,0 +1,37 @@
+﻿main {
+    flex: 1 0 auto;
+}
+
+.side-nav-logo {
+    width:120px;
+    height:120px;
+    margin:30px 60px 0px 60px;
+}
+
+.bold {
+    font-weight:bold;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+.klasa1 {
+    padding: 0 25px;
+}
+@media only screen and (min-width: 992px) {
+    main {
+    margin-left:240px;
+    }
+    footer {
+        margin-left:240px;
+    }
+}
+.row .col.noPadding {
+    padding:0;
+}
+
+.marginDown {
+    margin-bottom:25px;
+}

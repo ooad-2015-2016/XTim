@@ -1,0 +1,69 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<nav class="blue darken-2  hide-on-med-and-down marginDown">
+    <div class="nav-wrapper">
+        <ul class="left">
+            <li class="bold"><a href="#">Početna</a></li>
+        </ul>
+        <ul class="right">
+            @Html.Partial("_LoginPartial")
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <ul class="col collection with-header s12 m10 offset-m1 l10 offset-l1 noPadding">
+            <li class="collection-header"><h4>Najnoviji proizvodi</h4></li>
+@foreach (var item in ViewBag.proizvodi)
+            {
+            <li class="collection-item">
+                <a href="Proizvod/Details/@item.ID">
+                    @item.Naziv
+                </a>
+            </li>
+            
+            }  
+            <li class="collection-item"><a href="Proizvod">...Svi proizvodi</a></li>     
+        </ul>
+    </div>
+    <div class="row">
+        <ul class="col collection with-header s12 m10 offset-m1 l10 offset-l1 noPadding">
+            <li class="collection-header"><h4>Najbolje ocjenjeni proizvodi</h4></li>
+            @foreach (var item in ViewBag.najbolji)
+            {
+                <li class="collection-item">
+                    <a href="Proizvod/Details/@item.ID">
+                        @item.Naziv
+                    </a>
+                </li>
+
+            }
+            <li class="collection-item"><a href="Proizvod">...Svi proizvodi</a></li>
+        </ul>
+    </div>
+    <div class="row">
+        <ul class="col collection with-header s12 m10 offset-m1 l10 offset-l1 noPadding">
+            <li class="collection-header"><h4>Istaknuti proizvođači</h4></li>
+        @foreach (var item in ViewBag.proizvodjaci)
+        {
+            <li class="collection-item avatar">
+                <i class="material-icons circle">folder</i>
+                <span class="title">@item.Naziv</span>
+                <p>
+                    @item.Lokacija <br>
+                    Second Line
+                </p>
+                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
+            </li>
+        }
+        </ul>
+    </div>
+
+</div>
+            
+                
+            
+
+     

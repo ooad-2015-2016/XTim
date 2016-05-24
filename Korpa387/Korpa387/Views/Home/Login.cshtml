@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+<nav class="blue darken-2  hide-on-med-and-down marginDown">
+    <div class="nav-wrapper">
+        <ul class="left">
+            <li class="bold"><a href="/">Početna</a></li>
+        </ul>
+        <ul class="right">
+            @Html.Partial("_LoginPartial")
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col noPadding s12 m8 offset-m2 l8 offset-l2 white">
+            
+            <center>
+                <h4>Unesite vaše podatke:</h4>
+            </center>
+            <form method="post" onsubmit="return false;">
+                <div class="input-field col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+                    <input id="email" type="email" class="validate">
+                    <label for="email">Email</label>
+                </div>
+                <div class="input-field col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+                    <input id="password" type="password" class="validate">
+                    <label for="password">Lozinka</label>
+                </div>
+                <div class="input-field col s10 offset-s1 m8 offset-m2 l8 offset-l2 marginDown">
+                    <input type="submit" name="submit" value="Prijava" class="waves-effect waves-light btn right blue darken-4" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -46,3 +46,17 @@ input[type="search"].pretregaP {
 input[type="search"].pretregaP:focus {
     border-bottom:0;
 }
+
+.row .col.kontenerProfila {
+    border-radius:2px;
+    padding:20px;
+}
+
+.PPicturePl {
+    border-radius:5px;
+}
+
+.scale {
+    width:100%;
+    height:auto;
+}

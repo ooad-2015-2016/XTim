@@ -7,7 +7,7 @@ using Korpa387.Models;
 
 namespace Korpa387.DAL
 {
-    public class KorpaInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<Korpa387Context>
+    public class KorpaInitializer : System.Data.Entity.DropCreateDatabaseAlways<Korpa387Context>
     {
         protected override void Seed(Korpa387Context context)
         {
@@ -22,9 +22,9 @@ namespace Korpa387.DAL
 
             var proizvodjaci = new List<Proizvodjac>
             {
-                new Proizvodjac {Naziv="HIFA Oil", Opis="Distributer naftnih derivata", Lokacija="Tesanj", Fotografija=new byte[1] },
-                new Proizvodjac {Naziv="Kent", Opis="Proizvodjač najukusnijeg Keksa u BiH", Lokacija="Jelah", Fotografija=new byte[1] },
-                new Proizvodjac {Naziv="Vispak", Opis="Dugogodišnja tradicija zarne prehrambene industrije", Lokacija="Sarajevo", Fotografija=new byte[1] }
+                new Proizvodjac {Naziv="HIFA Oil", Email="hifa@example.com",Password="test", Opis="Distributer naftnih derivata", Lokacija="Tesanj", Fotografija=new byte[1] },
+                new Proizvodjac {Naziv="Kent", Email="kent@example.com",Password="test", Opis="Proizvodjač najukusnijeg Keksa u BiH", Lokacija="Jelah", Fotografija=new byte[1] },
+                new Proizvodjac {Naziv="Vispak", Email="vispak@example.com",Password="test", Opis="Dugogodišnja tradicija zarne prehrambene industrije", Lokacija="Sarajevo", Fotografija=new byte[1] }
             };
             proizvodjaci.ForEach(s => context.Proizvodjaci.Add(s));
             context.SaveChanges();
@@ -55,6 +55,9 @@ namespace Korpa387.DAL
                 new Recenzija {KorisnikID=1, ProizvodID=1, Tekst="Super Proizvod, volim domaće!", Datum=DateTime.Parse("2015-5-5"), Ocjena=5 },
                 new Recenzija {KorisnikID=2, ProizvodID=2, Tekst="S obzirom da je domaće, dobro je. Jelah miriše divno na keks!", Datum=DateTime.Parse("2015-5-5"), Ocjena=3 },
                 new Recenzija {KorisnikID=2, ProizvodID=3, Tekst="Uvijek korisnim ovo brašno kada kuham.", Datum=DateTime.Parse("2015-5-5"), Ocjena=4 },
+                new Recenzija {KorisnikID=2, ProizvodID=3, Tekst="Uvijek korisnim ovo brašno kada kuham.", Datum=DateTime.Parse("2015-5-5"), Ocjena=2 },
+                new Recenzija {KorisnikID=2, ProizvodID=3, Tekst="Uvijek korisnim ovo brašno zutregefe erf ergsdfrtere ertert errrr kada kuham.", Datum=DateTime.Parse("2015-5-5"), Ocjena=1 },
+
             };
             recenzije.ForEach(s => context.Recenzije.Add(s));
             context.SaveChanges();

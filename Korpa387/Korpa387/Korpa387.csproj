@@ -197,6 +197,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KorisnikController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProizvodController.cs" />
     <Compile Include="Controllers\ProizvodjacController.cs" />
@@ -222,11 +223,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\404.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -256,7 +256,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -296,6 +295,14 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Proizvodjac\Pretraga.cshtml" />
     <Content Include="Views\Proizvod\Pretraga.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Home\User.cshtml" />
+    <Content Include="Views\Korisnik\Create.cshtml" />
+    <Content Include="Views\Korisnik\Delete.cshtml" />
+    <Content Include="Views\Korisnik\Details.cshtml" />
+    <Content Include="Views\Korisnik\Edit.cshtml" />
+    <Content Include="Views\Korisnik\Index.cshtml" />
+    <Content Include="Views\Home\error404.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

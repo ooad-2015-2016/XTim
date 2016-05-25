@@ -9,6 +9,8 @@ namespace Korpa387.Models
     {
         public int ID { get; set; }
         public string Naziv { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
         public string Opis { get; set; }
         public string Lokacija { get; set; }
         public byte[] Fotografija { get; set; }

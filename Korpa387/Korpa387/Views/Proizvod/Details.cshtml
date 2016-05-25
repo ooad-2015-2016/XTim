@@ -1,58 +1,101 @@
-﻿@model Korpa387.Models.Proizvod
+﻿
 
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<nav class="blue darken-2  hide-on-med-and-down marginDown">
+    <div class="nav-wrapper">
+        <ul class="left">
+            <li class="bold"><a href="#">Početna</a></li>
+        </ul>
+        <ul class="right">
+            @Html.Partial("_LoginPartial")
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col s12 m10 offset-m1 l10 offset-l1 white kontenerProfila">
+            <div class="row">
+                <div class="col s6 m4 l4">
+                    <img src="~/Images/404.png" class="scale" />
+                </div>
+                <div class="col s6 m8 l8">
+                    <h4>@ViewBag.proizvod.Naziv</h4>
+                    <p>Proizvođač: <a href="@Url.Action("Details", "Proizvodjac", new { id= ViewBag.proizvod.Proizvodjac.ID })">@ViewBag.proizvod.Proizvodjac.Naziv</a></p>
+                    @if (ViewBag.ocjena != 0)
+                    {
+                        <p class="bold">Prosječna ocjena: @ViewBag.ocjena / 5</p>
+                    }
+                    
+                    @if ((int)ViewBag.ID == (int)ViewBag.proizvod.Proizvodjac.ID)
+                    {
+                        <hr />
+                        @Html.ActionLink("Uredi", "Edit", new { id = ViewBag.proizvod.ID }, new { @class = "btn blue darken-1 waves-effect waves-light" });
+                    }
+                    
+                </div>
+            </div>
 
-<div>
-    <h4>Proizvod</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Proizvodjac.Naziv)
-        </dt>
+            <h5>Opis:</h5>
+            <div class="row">
+                
+                <div class="col s12 m12 l12">
+                    <div class="card-panel blue darken-1">
+                        <span class="white-text">
+                            @ViewBag.proizvod.Opis
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m12 l12">
+                    <h5>Recenzije:</h5>
+                </div>
+                @foreach (var item in ViewBag.proizvod.Recenzije)
+                {
+                    <div class="col s12 m12 l12">
+                        <div class="card blue-grey darken-1">
+                            <div class="card-content white-text">
+                                <span class="card-title">
+                                    <a href="@Url.Action("Details","Korisnik", new { id = @item.Korisnik.ID })" class="white-text bold">
+                                        @item.Korisnik.ImePrezime
+                                    </a>
+                                </span>
+                                <p>
+                                    @item.Tekst
+                                </p>
+                                <div class="card-action" style="padding: 15px 0 0 0;">
 
-        <dd>
-            @Html.DisplayFor(model => model.Proizvodjac.Naziv)
-        </dd>
+                                    @if (item.Ocjena == 1)
+                                    {
+                                        <p>Ocjena: 1/5</p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Naziv)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Naziv)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Opis)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Opis)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DatumObjave)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DatumObjave)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Fotografija)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Fotografija)
-        </dd>
-
-    </dl>
+                                    }
+                                    else if (item.Ocjena == 2)
+                                    {
+                                        <p>Ocjena: 2/5</p>
+                                    }
+                                    else if (item.Ocjena == 3)
+                                    {
+                                        <p>Ocjena: 3/5</p>
+                                    }
+                                    else if (item.Ocjena == 4)
+                                    {
+                                        <p>Ocjena: 4/5</p>
+                                    }
+                                    else if (item.Ocjena == 5)
+                                    {
+                                        <p>Ocjena: 5/5</p>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div> 
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

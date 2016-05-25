@@ -8,7 +8,18 @@
 
     <ul class="nav">
         <li class="bold">
-            @Html.ActionLink("Dobrodošao " + ((Korisnik)Session["LoggedUser"]).ImePrezime + "!", "Index", "Home", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @if ((string)Session["LoggedUserType"] == "default")
+            {
+            <a href="Korisnik/Details/@(((Korisnik)Session["LoggedUser"]).ID)"><i class="material-icons left">face</i>@Session["LoggedUserName"]</a>
+            }
+            else if ((string)Session["LoggedUserType"] == "productAdmin")
+            {
+                <a href="Proizvodjac/Details/@(((Proizvodjac)Session["LoggedUser"]).ID)"><i class="material-icons left">face</i>@Session["LoggedUserName"]</a>
+            }
+            else if ((string)Session["LoggedUserType"] == "admin")
+            {
+                <a href="#"><i class="material-icons left">face</i>@Session["LoggedUserName"]</a>
+            }
         </li>
         <li class="bold"><a href="javascript:document.getElementById('logoutForm').submit()">Odjava</a></li>
     </ul>
@@ -17,7 +28,7 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li class="bold">@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li class="bold">@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li class="bold">@Html.ActionLink("Registracija", "Register", "Home", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li class="bold">@Html.ActionLink("Prijava", "Login", "Home", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }

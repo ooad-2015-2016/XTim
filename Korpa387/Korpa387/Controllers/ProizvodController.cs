@@ -59,14 +59,25 @@ namespace Korpa387.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index", "Proizvod");
             }
             Proizvod proizvod = db.Proizvodi.Find(id);
             if (proizvod == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("error404", "Home");
             }
-            return View(proizvod);
+            if (Session["LoggedUser"] != null && ((string)Session["LoggedUserType"] == "productAdmin")) ViewBag.ID = ((Proizvodjac)Session["LoggedUser"]).ID;
+            else ViewBag.ID = -1;
+            ViewBag.proizvod = proizvod;
+            int suma = 0;
+            foreach(var rec in proizvod.Recenzije)
+            {
+                suma += rec.Ocjena;
+            }
+            if(suma==0) ViewBag.ocjena = 0;
+            else ViewBag.ocjena = Math.Round((Decimal)((float)suma / proizvod.Recenzije.Count), 2);
+
+            return View();
         }
 
         // GET: Proizvod/Create

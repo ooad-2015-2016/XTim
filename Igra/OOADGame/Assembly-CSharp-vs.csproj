@@ -46,9 +46,17 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\ClickControl.cs" />
-     <Compile Include="Assets\TrackingClicks.cs" />
-     <Compile Include="Assets\hintmeter.cs" />
+     <Compile Include="Assets\Scripts\ClickControl.cs" />
+     <Compile Include="Assets\Scripts\ObjectInfo.cs" />
+     <Compile Include="Assets\Scripts\ObserverScript.cs" />
+     <Compile Include="Assets\Scripts\PauseWindow.cs" />
+     <Compile Include="Assets\Scripts\PauseWindowbutton.cs" />
+     <Compile Include="Assets\Scripts\SceneController.cs" />
+     <Compile Include="Assets\Scripts\StartWindow.cs" />
+     <Compile Include="Assets\Scripts\StartWindowButton.cs" />
+     <Compile Include="Assets\Scripts\hintmeter.cs" />
+     <Compile Include="Assets\Scripts\trackingclicks.cs" />
+     <Compile Include="Assets\Start Screen\MainScreenButton.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

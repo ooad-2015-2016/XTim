@@ -8,9 +8,19 @@ using System.Web;
 using System.Web.Mvc;
 using Korpa387.DAL;
 using Korpa387.Models;
+using unirest_net;
+using unirest_net.http;
+using System.Threading.Tasks;
 
 namespace Korpa387.Controllers
 {
+    public class quot
+    {
+         string quote { get; set; }
+         string author { get; set; }
+         string category { get; set; }
+         string cat { get; set; }
+    }
     public class ProizvodjacController : Controller
     {
         private Korpa387Context db = new Korpa387Context();
@@ -26,38 +36,29 @@ namespace Korpa387.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index", "Proizvodjac");
             }
             Proizvodjac proizvodjac = db.Proizvodjaci.Find(id);
             if (proizvodjac == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("error404", "Home");
             }
-            return View(proizvodjac);
-        }
-
-        // GET: Proizvodjac/Create
-        public ActionResult Create()
-        {
+            if(Session["LoggedUser"] != null && (String)Session["LoggedUserType"] == "productAdmin")
+            {
+                ViewBag.ID = (int)((Proizvodjac)Session["LoggedUser"]).ID;
+            }
+            else
+            {
+                ViewBag.ID = -1;
+            }
+            ViewBag.proizvodjac = proizvodjac;
+            ViewBag.bp = proizvodjac.Proizvodi.Count;
             return View();
         }
 
-        // POST: Proizvodjac/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Naziv,Opis,Lokacija,Fotografija")] Proizvodjac proizvodjac)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Proizvodjaci.Add(proizvodjac);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+        
 
-            return View(proizvodjac);
-        }
+       
 
         // GET: Proizvodjac/Edit/5
         public ActionResult Edit(int? id)

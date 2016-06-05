@@ -29,6 +29,26 @@ namespace Korpa387.Controllers
             
             return View();
         }
+        public ActionResult Admin()
+        {
+            var proizvodi = db.Proizvodi.Include(p => p.Proizvodjac);
+            var proizvodjaci = db.Proizvodjaci.ToList();
+            var svi = proizvodi.ToList();
+            var prvih7 = new List<Proizvod>();
+            for (int i = 0; i < 7; i++)
+            {
+                prvih7.Add(svi[i]);
+            }
+            ViewBag.proizvodi = prvih7;
+            ViewBag.najbolji = prvih7;
+            ViewBag.proizvodjaci = proizvodjaci;
+            if((string)Session["LoggedUserType"] != "admin")
+            {
+                return RedirectToAction("Index","Home");
+            }
+
+            return View();
+        }
 
         public ActionResult About()
         {
@@ -105,7 +125,7 @@ namespace Korpa387.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Register([Bind(Include = "ID,ImePrezime,Email,Password")] Korisnik korisnik)
         {
-            korisnik.Fotografija = new byte[1];
+            korisnik.Fotografija = "fotka.jpg";
             korisnik.Role = 1;
             if (ModelState.IsValid)
             {
@@ -115,6 +135,26 @@ namespace Korpa387.Controllers
             }
 
             return View(korisnik);
+        }
+        public ActionResult RegisterPro()
+        {
+            if (Session["LoggedUser"] != null) return RedirectToAction("Index", "Home");
+            ViewBag.err = "";
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult RegisterPro([Bind(Include = "ID,Naziv,Email,Password,Opis,Lokacija,Fotografija")] Proizvodjac proizvodjac)
+        {
+            proizvodjac.Fotografija = "fotka.jpg";
+            if (ModelState.IsValid)
+            {
+                db.Proizvodjaci.Add(proizvodjac);
+                db.SaveChanges();
+                return RedirectToAction("Login", "Home");
+            }
+
+            return View(proizvodjac);
         }
 
 

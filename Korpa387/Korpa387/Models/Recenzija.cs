@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -10,6 +11,7 @@ namespace Korpa387.Models
         public int ID { get; set; }
         public int KorisnikID { get; set; }
         public int ProizvodID { get; set; }
+        [DataType(DataType.MultilineText)]
         public string Tekst { get; set; }
         public DateTime Datum { get; set; }
         public int Ocjena { get; set; } // 1-5

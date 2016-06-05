@@ -2,31 +2,38 @@ Initialize engine version: 5.3.5f1 (960ebf59018a)
 GfxDevice: creating device client; threaded=1
 Direct3D:
     Version:  Direct3D 11.0 [level 11.0]
-    Renderer: AMD Radeon R7 200 Series (ID=0x6613)
-    Vendor:   ATI
-    VRAM:     2030 MB
+    Renderer: Intel(R) HD Graphics 4000 (ID=0x166)
+    Vendor:   Intel
+    VRAM:     912 MB
 Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\k3ma1\Documents\OOADGame\OOADGame_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\k3ma1\Documents\OOADGame\OOADGame_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\k3ma1\Documents\OOADGame\OOADGame_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\k3ma1\Documents\OOADGame\OOADGame_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\k3ma1\Documents\OOADGame\OOADGame_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\k3ma1\Documents\OOADGame\OOADGame_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: C:\Users\k3ma1\Documents\OOADGame\OOADGame_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading C:\Users\k3ma1\Documents\OOADGame\OOADGame_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.157 seconds
-Platform assembly: C:\Users\k3ma1\Documents\OOADGame\OOADGame_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: C:\Users\k3ma1\Documents\OOADGame\OOADGame_Data\Managed\System.dll (this message is harmless)
+Platform assembly: C:\Users\Korisnik\Desktop\pro\Igra\OOADGame\OOADGame_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Korisnik\Desktop\pro\Igra\OOADGame\OOADGame_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Korisnik\Desktop\pro\Igra\OOADGame\OOADGame_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Korisnik\Desktop\pro\Igra\OOADGame\OOADGame_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Korisnik\Desktop\pro\Igra\OOADGame\OOADGame_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Korisnik\Desktop\pro\Igra\OOADGame\OOADGame_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Korisnik\Desktop\pro\Igra\OOADGame\OOADGame_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Korisnik\Desktop\pro\Igra\OOADGame\OOADGame_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.129 seconds
+Platform assembly: C:\Users\Korisnik\Desktop\pro\Igra\OOADGame\OOADGame_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Korisnik\Desktop\pro\Igra\OOADGame\OOADGame_Data\Managed\System.dll (this message is harmless)
 <RI> Initializing input.
+XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
 <RI> Input initialized.
-desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+desktop: 1366x768 60Hz; virtual: 2646x1035 at -1280,-267
 <RI> Initialized touch support.
-UnloadTime: 0.448953 ms
+UnloadTime: 161.804138 ms
 Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 0.294336 ms
+UnloadTime: 11.121786 ms
 
 Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 468.
-Total: 0.137401 ms (FindLiveObjects: 0.020196 ms CreateObjectMapping: 0.015892 ms MarkObjects: 0.094690 ms  DeleteObjects: 0.006290 ms)
+Total: 0.652504 ms (FindLiveObjects: 0.498950 ms CreateObjectMapping: 0.019736 ms MarkObjects: 0.124737 ms  DeleteObjects: 0.007894 ms)
+
+Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.587372 ms
+
+Unloading 66 unused Assets to reduce memory usage. Loaded Objects now: 171.
+Total: 0.147632 ms (FindLiveObjects: 0.026447 ms CreateObjectMapping: 0.011447 ms MarkObjects: 0.072632 ms  DeleteObjects: 0.036710 ms)
 
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: 18dc -> priority: 1 
+  Thread -> id: 1ec4 -> priority: 1 

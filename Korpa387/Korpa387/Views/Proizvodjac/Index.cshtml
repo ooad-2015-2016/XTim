@@ -14,6 +14,7 @@
     </div>
 </nav>
 <div class="container">
+    
 @using (Html.BeginForm("Pretraga", "Proizvodjac", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "", role = "form" }))
 {
     <div class="row">
@@ -29,7 +30,8 @@
             {
             <li class="collection-item avatar">
                 <i class="material-icons circle">folder</i>
-                <span class="title"><a href="Proizvodjac/Details/@item.ID">@item.Naziv</a></span>
+                <span class="title"><a href="@Url.Action("Details","Proizvodjac",new { id= item.ID })">@item.Naziv</a></span>
+                
                 <p>
                     @item.Lokacija <br>
                     @item.Opis

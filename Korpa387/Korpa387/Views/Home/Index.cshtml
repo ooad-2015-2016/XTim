@@ -14,52 +14,44 @@
 </nav>
 <div class="container">
     <div class="row">
-        <ul class="col collection with-header s12 m10 offset-m1 l10 offset-l1 noPadding">
-            <li class="collection-header"><h4>Najnoviji proizvodi</h4></li>
-@foreach (var item in ViewBag.proizvodi)
-            {
-            <li class="collection-item">
-                <a href="Proizvod/Details/@item.ID">
-                    @item.Naziv
-                </a>
-            </li>
-            
-            }  
-            <li class="collection-item"><a href="Proizvod">...Svi proizvodi</a></li>     
-        </ul>
+        <div class="col collection with-header s12 m10 offset-m1 l10 offset-l1  white">
+            <center><h3>Dobrodošao na Korpa387!</h3></center>
+            <hr />
+            <p>Možete se logovati kao jedan od navedenih korisnika:</p>
+            <table class="striped">
+                <tr>
+                    <td>Username</td>
+                    <td>Password</td>
+                </tr>
+                <tr>
+                    <td>admin@example.com</td>
+                    <td>admin</td>
+                </tr>
+                <tr>
+                    <td>korisnik@example.com</td>
+                    <td>korisnik</td>
+                </tr>
+            </table>
+            <p>Naravno, prijava kao Admin ima svoje prednosti. Kao admin možete pregledati listu svih korisnika: <a href="@Url.Action("Index","Korisnik")">OVDJE</a> ,(morate biti logovani).</p>
+            <p>Isto tako se možete prijaviti kao jedan od proizvođača:</p>
+            <table class="striped">
+                <tr>
+                    <td>Username</td>
+                    <td>Password</td>
+                </tr>
+                <tr>
+                    <td>hifa@bih.net.ba</td>
+                    <td>test</td>
+                </tr>
+                <tr>
+                    <td>info@pivara.ba</td>
+                    <td>test</td>
+                </tr>
+            </table>
+            <p>Kao proizvođač možete uređivati svoje proizvode.</p>
+        </div>
     </div>
-    <div class="row">
-        <ul class="col collection with-header s12 m10 offset-m1 l10 offset-l1 noPadding">
-            <li class="collection-header"><h4>Najbolje ocjenjeni proizvodi</h4></li>
-            @foreach (var item in ViewBag.najbolji)
-            {
-                <li class="collection-item">
-                    <a href="Proizvod/Details/@item.ID">
-                        @item.Naziv
-                    </a>
-                </li>
-
-            }
-            <li class="collection-item"><a href="Proizvod">...Svi proizvodi</a></li>
-        </ul>
-    </div>
-    <div class="row">
-        <ul class="col collection with-header s12 m10 offset-m1 l10 offset-l1 noPadding">
-            <li class="collection-header"><h4>Istaknuti proizvođači</h4></li>
-        @foreach (var item in ViewBag.proizvodjaci)
-        {
-            <li class="collection-item avatar">
-                <i class="material-icons circle">folder</i>
-                <span class="title">@item.Naziv</span>
-                <p>
-                    @item.Lokacija <br>
-                    Second Line
-                </p>
-                <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-            </li>
-        }
-        </ul>
-    </div>
+    
 
 </div>
             

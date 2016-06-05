@@ -18,7 +18,11 @@ namespace Korpa387.Controllers
         // GET: Korisniks
         public ActionResult Index()
         {
-            return View(db.Korisnici.ToList());
+            if(Session["LoggedUser"] != null && (string)Session["LoggedUserType"] == "admin")
+            {
+                return View(db.Korisnici.ToList());
+            }
+            return RedirectToAction("Index","Home");
         }
 
         // GET: Korisniks/Details/5
@@ -67,7 +71,12 @@ namespace Korpa387.Controllers
         // GET: Korisniks/Create
         public ActionResult Create()
         {
-            return View();
+            if (Session["LoggedUser"] != null && (string)Session["LoggedUserType"] == "admin")
+            {
+                return View();
+            }
+            return RedirectToAction("Index", "Home");
+            
         }
 
         // POST: Korisniks/Create
@@ -77,6 +86,8 @@ namespace Korpa387.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,ImePrezime,Email,Password,Fotografija,Role")] Korisnik korisnik)
         {
+
+            korisnik.Role = 1;
             if (ModelState.IsValid)
             {
                 db.Korisnici.Add(korisnik);
@@ -121,6 +132,10 @@ namespace Korpa387.Controllers
         // GET: Korisniks/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (Session["LoggedUser"] == null || (string)Session["LoggedUserType"] != "admin")
+            {
+                return RedirectToAction("Index", "Home");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

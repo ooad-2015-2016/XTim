@@ -80,12 +80,24 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -129,6 +141,10 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="unirest-net, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\unirest-net.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -195,6 +211,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KorisnikController.cs" />
@@ -224,6 +241,67 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Images\404.png" />
+    <Content Include="Images\data\10w-40.jpg" />
+    <Content Include="Images\data\140331013.jpg" />
+    <Content Include="Images\data\15w-40.jpg" />
+    <Content Include="Images\data\2l.png" />
+    <Content Include="Images\data\3de.jpg" />
+    <Content Include="Images\data\5093bb979c0d9_classic.jpg" />
+    <Content Include="Images\data\55af9e8d27be2_TP_premium_16-ljubicica.jpg" />
+    <Content Include="Images\data\56f1624570c07_lavanda_10_1_3sl.png" />
+    <Content Include="Images\data\5w-40.jpg" />
+    <Content Include="Images\data\633x850 10w.jpg" />
+    <Content Include="Images\data\7fc7677e580ac3e7b8477ddd1f0ba7b9.png" />
+    <Content Include="Images\data\a6a9da4fb1e8a12c0c3eb3f96b0f788a.png" />
+    <Content Include="Images\data\ajvarLJuti5.png" />
+    <Content Include="Images\data\arix.png" />
+    <Content Include="Images\data\AR_P.png" />
+    <Content Include="Images\data\b9faf37be995e6dd0c571f2e046415c1.png" />
+    <Content Include="Images\data\bekto.jpg" />
+    <Content Include="Images\data\bosnalijek.jpg" />
+    <Content Include="Images\data\Burek-2.jpg" />
+    <Content Include="Images\data\crnot.jpg" />
+    <Content Include="Images\data\d3b92053914bed17b24f9d39a18c16ba.png" />
+    <Content Include="Images\data\DG.png" />
+    <Content Include="Images\data\Dijetalna-so-100-i-250-g.jpg" />
+    <Content Include="Images\data\Dita-logo-e1453041347803.png" />
+    <Content Include="Images\data\Diva_web.png" />
+    <Content Include="Images\data\dzemSumsko.png" />
+    <Content Include="Images\data\electro.jpg" />
+    <Content Include="Images\data\erster.jpg" />
+    <Content Include="Images\data\fds-vest.jpg" />
+    <Content Include="Images\data\freeze-stop-100.jpg" />
+    <Content Include="Images\data\hifa.jpg" />
+    <Content Include="Images\data\hljeb.jpg" />
+    <Content Include="Images\data\hydrofluidVG46.jpg" />
+    <Content Include="Images\data\ida.png" />
+    <Content Include="Images\data\klas.jpg" />
+    <Content Include="Images\data\kristal.jpg" />
+    <Content Include="Images\data\krofna-sa-eurokremom.jpg" />
+    <Content Include="Images\data\logo.png" />
+    <Content Include="Images\data\logo_stroke1.png" />
+    <Content Include="Images\data\lopril.jpg" />
+    <Content Include="Images\data\meggle.png" />
+    <Content Include="Images\data\mijesanaSalata4.png" />
+    <Content Include="Images\data\obicna.png" />
+    <Content Include="Images\data\paracetam.jpg" />
+    <Content Include="Images\data\piloil100.jpg" />
+    <Content Include="Images\data\PivaraTuzla.png" />
+    <Content Include="Images\data\premium-hs_self.png" />
+    <Content Include="Images\data\sae10w-40.jpg" />
+    <Content Include="Images\data\sae15w-40.jpg" />
+    <Content Include="Images\data\sae30.jpg" />
+    <Content Include="Images\data\sae90.jpg" />
+    <Content Include="Images\data\sokicBorovnica-1.png" />
+    <Content Include="Images\data\spivara.png" />
+    <Content Include="Images\data\startbih_2015062905474494_big.jpg" />
+    <Content Include="Images\data\Tabletirana-so-25-kg.jpg" />
+    <Content Include="Images\data\tkiseljak.jpg" />
+    <Content Include="Images\data\tpilsner.jpg" />
+    <Content Include="Images\data\Tuzlanska-so-1-kg.jpg" />
+    <Content Include="Images\data\water-meter-cabinet.jpg" />
+    <Content Include="Images\data\xiclav.jpg" />
+    <Content Include="Images\korisnici.png" />
     <Content Include="Images\logo.png" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -244,6 +322,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\script.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="unirest-net.dll" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -277,7 +356,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Proizvodjac\Create.cshtml" />
     <Content Include="Views\Proizvodjac\Delete.cshtml" />
     <Content Include="Views\Proizvodjac\Details.cshtml" />
     <Content Include="Views\Proizvodjac\Edit.cshtml" />
@@ -303,6 +381,10 @@
     <Content Include="Views\Korisnik\Edit.cshtml" />
     <Content Include="Views\Korisnik\Index.cshtml" />
     <Content Include="Views\Home\error404.cshtml" />
+    <Content Include="Views\Home\RegisterPro.cshtml" />
+    <Content Include="Views\Proizvod\Rest.cshtml" />
+    <Content Include="Views\Shared\Rest.cshtml" />
+    <Content Include="Views\Home\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

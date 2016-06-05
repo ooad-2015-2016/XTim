@@ -4,47 +4,89 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<nav class="blue darken-2  hide-on-med-and-down marginDown">
+    <div class="nav-wrapper">
+        <ul class="left">
+            <li class="bold"><a href="@Url.Action("Index","Home")">Početna</a></li>
+        </ul>
+        <ul class="right">
+            @Html.Partial("_LoginPartial")
+        </ul>
+    </div>
+</nav>
 
-<div>
-    <h4>Proizvodjac</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Naziv)
-        </dt>
+<div class="container">
+    <div class="row" style="margin-bottom:0;">
+        <div class="col s12 m10 offset-m1 l10 offset-l1 grey lighten-3 kontroleKontenera">
+            <a href="@Url.Action("Index", "Proizvodjac")" class="black-text"><i class="material-icons">arrow_back</i></a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 m10 offset-m1 l10 offset-l1 white kontenerProfila">
+            <div class="row">
+                <div class="col s6 m4 l4">
+                    <img src="~/Images/data/@ViewBag.proizvodjac.Fotografija" class="scale" />
+                </div>
+                <div class="col s6 m8 l8">
+                    <h4>@ViewBag.proizvodjac.Naziv</h4>
+                    <p>Lokacija: @ViewBag.proizvodjac.Lokacija</p>
+                    
+                    @if (ViewBag.ID == ViewBag.proizvodjac.ID)
+                    {
+                        @Html.ActionLink("Uredi", "Edit", "Proizvodjac", new { id = ViewBag.proizvodjac.ID }, new { @class = "btn blue darken-1 waves-effect waves-light" });
 
-        <dd>
-            @Html.DisplayFor(model => model.Naziv)
-        </dd>
+                    }
+                    else if (Session["LoggedUser"] != null && (string)Session["LoggedUserType"] == "admin")
+                    {
+                        <hr />
+                        @Html.ActionLink("Obriši", "Delete", new { id = ViewBag.proizvodjac.ID }, new { @class = "btn blue darken-1 waves-effect waves-light" });
+                    }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Opis)
-        </dt>
+                </div>
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Opis)
-        </dd>
+            <h5>Opis:</h5>
+            <div class="row">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Lokacija)
-        </dt>
+                <div class="col s12 m12 l12">
+                    <div class="card-panel blue darken-1">
+                        <span class="white-text">
+                            @ViewBag.proizvodjac.Opis
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <h5>Proizvodi:</h5>
+            @if (ViewBag.ID == ViewBag.proizvodjac.ID)
+            {
+            <div class="row">
+                <a href="@Url.Action("Create","Proizvod")" class="col s12 m12 l12">
+                    <div class="card-panel blue darken-3" style="padding:5px;">
+                        <center class="white-text" style="font-size:30px;">
+                            +
+                        </center>
+                    </div>
+                </a>
+            </div>
+            }
+            <ul class="collection">
+                @if (ViewBag.bp == 0)
+                {
+                    <li class="collection-item">Proizvođač nema proizvoda</li>
+                }
+                else
+                {
+                    foreach (var item in ViewBag.proizvodjac.Proizvodi)
+                    {
+                        <li class="collection-item">
+                            <a href="@Url.Action("Details","Proizvod",new { id=item.ID })">
+                                @item.Naziv
+                            </a>
+                        </li>
+                    }
 
-        <dd>
-            @Html.DisplayFor(model => model.Lokacija)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Fotografija)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Fotografija)
-        </dd>
-
-    </dl>
+                }
+            </ul>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+    </div>
+</div>

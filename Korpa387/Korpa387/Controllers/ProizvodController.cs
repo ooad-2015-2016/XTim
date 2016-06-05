@@ -8,9 +8,31 @@ using System.Web;
 using System.Web.Mvc;
 using Korpa387.DAL;
 using Korpa387.Models;
+using System.Web.Script.Serialization;
+using System.IO;
 
 namespace Korpa387.Controllers
 {
+    public class JSONProizvod
+    {
+        string naziv { get; set; }
+        string opis { get; set; }
+        string proizvodjac { get; set; }
+        int id { get; set; }
+        long barkod { get; set; }
+        int idproizvodjaca { get; set; }
+
+        public JSONProizvod (string nnaziv, string oopis, string pproizvodjac, int iid, int iidproizvodjaca,long bbarkod)
+        {
+            naziv = nnaziv;
+            opis = oopis;
+            proizvodjac = pproizvodjac;
+            id = iid;
+            idproizvodjaca = iidproizvodjaca;
+            barkod = bbarkod;
+        }
+        
+    }
     public class ProizvodController : Controller
     {
         private Korpa387Context db = new Korpa387Context();
@@ -22,6 +44,8 @@ namespace Korpa387.Controllers
             ViewBag.proizvodi = proizvodi;
             return View();
         }
+
+        
 
         public ActionResult Pretraga()
         {
@@ -37,8 +61,30 @@ namespace Korpa387.Controllers
             var proizvodi = db.Proizvodi.Include(p => p.Proizvodjac).ToList();
             if (!String.IsNullOrEmpty(pretraga) && pretraga.Length < 32)
             {
-                var svi = proizvodi.Where(s => s.Naziv.ToLower().Contains(pretraga));
-                ViewBag.proizvodi = svi;
+                var svi = proizvodi.Where(s => s.Naziv.ToLower().Contains(pretraga)).ToList();
+                if(svi.Count==0)
+                {
+                    try
+                    {
+                        long bk = Convert.ToInt64(pretraga);
+                        var jedan = proizvodi.Where(s => s.Barkod.Equals(bk)).ToList();
+                        if(jedan.Count == 1)
+                        {
+                            return RedirectToAction("Details","Proizvod",new { id=jedan[0].ID });
+                        }
+                        ViewBag.proizvodi = jedan;
+                    } catch (Exception e)
+                    {
+                        ViewBag.proizvodi = svi;
+                        
+                    }
+                    
+                }
+                else
+                {
+                    ViewBag.proizvodi = svi;
+                }
+                
                 ViewBag.pojam = pretraga;
             }
             else if (pretraga.Length >= 32)
@@ -74,16 +120,94 @@ namespace Korpa387.Controllers
             {
                 suma += rec.Ocjena;
             }
-            if(suma==0) ViewBag.ocjena = 0;
+
+            var sverecenzije = db.Recenzije.Where(p => p.ProizvodID == id).ToList();
+            var recenzije = new List<Recenzija>();
+            if (sverecenzije.Count > 10)
+            {
+                for (int i = 1; i < 11; i++)
+                {
+                    recenzije.Add(sverecenzije[sverecenzije.Count - i]);
+                }
+                ViewBag.recenzije = recenzije;
+                ViewBag.poruka = "Zadnjih 10 recenzija:";
+            }
+            else
+            {
+                for (int i = 1; i <= sverecenzije.Count; i++)
+                {
+                    recenzije.Add(sverecenzije[sverecenzije.Count - i]);
+                }
+                ViewBag.recenzije = recenzije;
+                ViewBag.poruka = "Sve recenzije:";
+            }
+
+
+            if (suma==0) ViewBag.ocjena = 0;
             else ViewBag.ocjena = Math.Round((Decimal)((float)suma / proizvod.Recenzije.Count), 2);
 
             return View();
+        }
+        /*
+        public ActionResult Rest(int? id)
+        {
+            if (id == null)
+            {
+                ViewBag.value = "null";
+                return View();
+            }
+            Proizvod proizvod = db.Proizvodi.Find(id);
+            if (proizvod == null)
+            {
+                ViewBag.value = "null";
+                return View();
+            }
+            
+            ViewBag.proizvod = proizvod;
+            var ovo = new JSONProizvod(proizvod.Naziv, proizvod.Opis, proizvod.Proizvodjac.Naziv, proizvod.ID, proizvod.ProizvodjacID, proizvod.Barkod);
+            ViewBag.value = new JavaScriptSerializer().Serialize(ovo);
+            return View();
+
+            
+        }
+        */
+        [HttpPost]
+        public ActionResult Details(int? id, string textareaRec, string ocjena)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Index", "Proizvod");
+            }
+            Proizvod proizvod = db.Proizvodi.Find(id);
+            if (proizvod == null)
+            {
+                return RedirectToAction("error404", "Home");
+            }
+            if(Session["LoggedUser"] != null)
+            {
+                int idk = (int)((Korisnik)Session["LoggedUser"]).ID;
+                int idp = (int)id;
+                int ocj = Convert.ToInt32(ocjena);
+                var rec = new Recenzija { KorisnikID = idk, ProizvodID = idp, Tekst = textareaRec, Datum = DateTime.Parse("2015-5-5"), Ocjena = ocj };
+                db.Recenzije.Add(rec);
+                db.SaveChanges();
+                return RedirectToAction("Details", "Proizvod", new { id = id });
+            }
+            else
+            {
+                return RedirectToAction("Details", "Proizvod", new { id = id });
+            }
+            
         }
 
         // GET: Proizvod/Create
         public ActionResult Create()
         {
-            ViewBag.ProizvodjacID = new SelectList(db.Proizvodjaci, "ID", "Naziv");
+            if (Session["LoggedUser"] != null && (string)Session["LoggedUserType"] == "productAdmin") ViewBag.ProizvodjacID = 1;
+            else
+            {
+                return RedirectToAction("Index","Home");
+            }
             return View();
         }
 
@@ -92,17 +216,19 @@ namespace Korpa387.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,ProizvodjacID,Naziv,Opis,DatumObjave,Fotografija")] Proizvod proizvod)
+        public ActionResult Create(string Naziv, string Opis, string Barkod)
         {
-            if (ModelState.IsValid)
+            string fotografija = "logo.png";
+            
+            if (Session["LoggedUser"] != null && (string)Session["LoggedUserType"] == "productAdmin")
             {
-                db.Proizvodi.Add(proizvod);
+                long bk = Convert.ToInt64(Barkod);
+                var noviPro = new Proizvod { Barkod = bk, ProizvodjacID = ((Proizvodjac)Session["LoggedUser"]).ID, Naziv = Naziv, Opis = Opis, DatumObjave = DateTime.Parse("2015-5-5"), Fotografija = fotografija };
+                db.Proizvodi.Add(noviPro);
                 db.SaveChanges();
-                return RedirectToAction("Index");
             }
-
-            ViewBag.ProizvodjacID = new SelectList(db.Proizvodjaci, "ID", "Naziv", proizvod.ProizvodjacID);
-            return View(proizvod);
+            return RedirectToAction("Index");
+            
         }
 
         // GET: Proizvod/Edit/5
@@ -110,31 +236,44 @@ namespace Korpa387.Controllers
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return RedirectToAction("Index", "Proizvod");
             }
             Proizvod proizvod = db.Proizvodi.Find(id);
             if (proizvod == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("error404", "Home");
             }
-            ViewBag.ProizvodjacID = new SelectList(db.Proizvodjaci, "ID", "Naziv", proizvod.ProizvodjacID);
-            return View(proizvod);
+            if(Session["LoggedUser"] != null && (string)Session["LoggedUserType"] == "productAdmin")
+            {
+                if(((Proizvodjac)Session["LoggedUser"]).ID == proizvod.ProizvodjacID)
+                {
+                    ViewBag.proizvod = proizvod;
+                    return View(proizvod);
+                }
+                else
+                {
+                    return RedirectToAction("Details", "Proizvod", new { id=id });
+                }
+            }
+            else
+            {
+                return RedirectToAction("Details", "Proizvod", new { id = id });
+            }
+
         }
 
         // POST: Proizvod/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,ProizvodjacID,Naziv,Opis,DatumObjave,Fotografija")] Proizvod proizvod)
+        public ActionResult Edit([Bind(Include = "ID,Barkod,ProizvodjacID,Naziv,Opis,DatumObjave,Fotografija")] Proizvod proizvod)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(proizvod).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Proizvod");
             }
-            ViewBag.ProizvodjacID = new SelectList(db.Proizvodjaci, "ID", "Naziv", proizvod.ProizvodjacID);
             return View(proizvod);
         }
 

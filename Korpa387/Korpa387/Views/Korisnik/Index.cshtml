@@ -4,54 +4,64 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<nav class="blue darken-2  hide-on-med-and-down marginDown">
+    <div class="nav-wrapper">
+        <ul class="left">
+            <li class="bold"><a href="#">Početna</a></li>
+        </ul>
+        <ul class="right">
+            @Html.Partial("_LoginPartial")
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col  s12 m12 l12 white" style="">
+            <p>
+                @Html.ActionLink("Napravi Korisnika", "Create","Korisnik", new {@class="btn waves-effect" })
+            </p>
+            <p>Tip 0=Admin, Tip 1=Korisnik</p>
+            <table class="striped responsive-table">
+                <tr>
+                    <th>
+                        Ime i prezime
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Lozinka
+                    </th>
+                    <th>
+                       Tip
+                    </th>
+                    <th></th>
+                </tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ImePrezime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fotografija)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Role)
-        </th>
-        <th></th>
-    </tr>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ImePrezime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Password)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Role)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Uredi", "Edit", new { id = item.ID }) |
+                            @Html.ActionLink("Profil", "Details", new { id = item.ID }) |
+                            @Html.ActionLink("Obriši", "Delete", new { id = item.ID })
+                        </td>
+                    </tr>
+                }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImePrezime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fotografija)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Role)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
-
-</table>
+            </table>
+        </div>
+    </div>
+</div>

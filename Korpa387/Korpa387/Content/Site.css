@@ -48,9 +48,18 @@ input[type="search"].pretregaP:focus {
 }
 
 .row .col.kontenerProfila {
-    border-radius:2px;
+    -moz-border-radius-bottomright:2px;
+    -moz-border-radius-bottomleft:2px;
+    border-bottom-left-radius:2px;
+    border-bottom-right-radius:2px;
     padding:20px;
 }
+.row .col.kontroleKontenera {
+    border-top-left-radius:2px;
+    border-top-right-radius:2px;
+    padding:13px 10px 10px 10px;
+}
+
 
 .PPicturePl {
     border-radius:5px;

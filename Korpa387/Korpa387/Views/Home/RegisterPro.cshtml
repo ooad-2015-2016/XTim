@@ -1,0 +1,61 @@
+﻿@model Korpa387.Models.Proizvodjac
+@{
+    ViewBag.Title = "Register";
+}
+
+
+<nav class="blue darken-2  hide-on-med-and-down marginDown">
+    <div class="nav-wrapper">
+        <ul class="left">
+            <li class="bold"><a href="/">Početna</a></li>
+        </ul>
+        <ul class="right">
+            @Html.Partial("_LoginPartial")
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col noPadding s12 m8 offset-m2 l8 offset-l2 white" style="padding-top:25px;">
+
+            <center>
+                <h4>Unesite vaše podatke:</h4>
+            </center>
+            @using (Html.BeginForm("RegisterPro", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "", role = "form", @onsubmit = "return true;" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="input-field col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+                    @Html.EditorFor(model => model.Naziv, new { htmlAttributes = new { @maxlength = "32" } })
+                    <label for="Naziv">Naziv</label>
+                </div>
+                <div class="input-field col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "validate" } })
+                    <label for="Email">Email</label>
+                </div>
+                <div class="input-field col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+                    <label for="password">Lozinka</label>
+                </div>
+                <div class="input-field col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+                    <label for="password">Opis</label>
+                    @Html.EditorFor(model => model.Opis, new { htmlAttributes = new { @class = "materialize-textarea", @length = "300", @maxlenght = "300" } })
+                    @Html.ValidationMessageFor(model => model.Opis, "", new { @class = "text-danger" })
+                </div>
+                <div class="input-field col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+                    @Html.EditorFor(model => model.Lokacija, new { htmlAttributes = new { @maxlength = "32" } })
+                    <label for="Naziv">Lokacija</label>
+                </div>
+                @Html.HiddenFor(model => model.Fotografija, new {@value = "nema" });
+                <div class="input-field col s10 offset-s1 m8 offset-m2 l8 offset-l2 ">
+                    <a href="@Url.Action("Register","Home")">Korisnik?</a>
+                    <input type="submit" name="submit" value="Registracija" class="waves-effect waves-light btn right blue darken-4" />
+                </div>
+                <div id="poruke" class="input-field col s10 offset-s1 m8 offset-m2 l8 offset-l2 marginDown">
+                    <p>@ViewBag.err</p>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+

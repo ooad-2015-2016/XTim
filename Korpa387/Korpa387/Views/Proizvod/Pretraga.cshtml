@@ -18,7 +18,7 @@
     {
         <div class="row">
             <div class="col s12 m10 offset-m1 l10 offset-l1 white pretragaK">
-                @Html.TextBox("pretraga", "", new { @class = "pretregaP", @type = "search", @name = "pretraga", @placeholder = "Unesite pojam za pretragu" })
+                @Html.TextBox("pretraga", "", new { @class = "pretregaP", @type = "search", @name = "pretraga", @placeholder = "Unesite pojam za pretragu", autofocus="" })
             </div>
         </div>
     }
@@ -30,7 +30,7 @@
             {
                 <li class="collection-item avatar">
                     <i class="material-icons circle">folder</i>
-                    <span class="title"><a href="Proizvodjac/Details/@item.ID">@item.Naziv</a></span>
+                    <span class="title"><a href="@Url.Action("Details", "Proizvod", new { id = item.ID })">@item.Naziv</a></span>
                     <p>
                         @item.Proizvodjac.Naziv <br>
                         @item.Opis

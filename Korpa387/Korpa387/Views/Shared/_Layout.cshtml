@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Korpa 387</title>
    
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="~/Content/materialize.min.css" media="screen,projection" />
     @Styles.Render("~/Content/css")
@@ -18,7 +18,7 @@
             <li class="bold">@Html.ActionLink("Početna", "Index", "Home")</li>
             <li class="bold">@Html.ActionLink("Proizvodi", "Index", "Proizvod")</li>
             <li class="bold">@Html.ActionLink("Proizvođači", "Index" ,"Proizvodjac")</li>
-            <li class="bold">@Html.ActionLink("Ponude", "Index", "Home")</li>
+            <li class="bold"><a class="modal-trigger" href="#modalHelp">Pomoć</a></li>
             <li class="bold">@Html.ActionLink("Kontakt", "Index", "Proizvodjac")</li>
             
         </ul>
@@ -31,13 +31,39 @@
                     <li class="bold">@Html.ActionLink("Početna", "Index", "Home")</li>
                     <li class="bold">@Html.ActionLink("Proizvodi", "Index", "Proizvod")</li>
                     <li class="bold">@Html.ActionLink("Proizvođači", "Index", "Proizvodjac")</li>
-                    <li class="bold">@Html.ActionLink("Ponude", "Index", "Home")</li>
+                    <li class="bold"><a class="modal-trigger" href="#modalHelp">Pomoć</a></li>
                     <li class="bold">@Html.ActionLink("Kontakt", "Index", "Proizvodjac")</li>
                 </ul>
             </nav>
 
             @RenderBody()
     </main>
+
+    <div id="modalHelp" class="modal">
+        <div class="modal-content">
+            <h4>Pomoć</h4>
+            <hr />
+            <p>Omogućene funkcionalnosti:</p>
+                <ul>
+                    <li>Registracija korisnika</li>
+                    <li>Registracija proizvođača</li>
+                    <li>Prijava</li>
+                    <li>Dodavanje proizvoda</li>
+                    <li>Uređivanje proizvoda</li>
+                    <li>Uređivanje profila</li>
+                    <li>Pretraga proizvoda</li>
+                    <li>Pretraga proizvođača</li>
+                    <li>Ostavljanje recenzija</li>
+                </ul>
+            <p>Kao periferni uređaj služi čitač magnetnih kartica koji simulira barkod čitač. Njegova primjerna je implementirana na pretrazi proizvoda.</p>
+            <p>Upload fotografija je onemogućen.</p>
+            
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Zatvori</a>
+        </div>
+    </div>
+
     <footer class="page-footer blue darken-2">
         <div class="container">
             <div class="row">

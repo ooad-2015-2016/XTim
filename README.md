@@ -69,6 +69,7 @@ Pretraga:
 - Neregistrovani korisnik
 
 #Final
+-VIDEO: https://www.youtube.com/watch?v=LRO7obiS5Oc
 
 -Baza podataka : Lokalna / Entity 
 

@@ -2,6 +2,8 @@
 
 X-Tim
 
+ZA FINALNE INFORMACIJE SKROLAJTE DO KRAJA!
+
 **Clanovi Tima:**
 
  - Belmin Mustajbasic
@@ -65,3 +67,11 @@ Pretraga:
 - Proizvođač
 - Registrovani korisnik
 - Neregistrovani korisnik
+
+
+**Baza podataka** : *Lokalna / Entity*
+**Eksterni uređaj** : *Korišten čitač magnetnih kartica koji je simulirao barkod čitač. Korišten za pretragu proizvda*
+**Validacija** : *Najbolji primjer validacije je pri registraciji korisnika(Ime i prezime moraju biti duži od 6 karaktera, email ima regex vadilaciju i password mora biti duži od 5 karaktera)*
+**Prilagođavanje UI-a** : *UI sa strane ASp dijela je prilagođen za sve ekrane , od velikih do malih, a UWP je prilagođen za mobilne uređaje.*
+
+**Web Servisi nisu korišteni.**

@@ -1,0 +1,16 @@
+﻿<Page
+    x:Class="ProjekatApp.Views.Proizvod1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProjekatApp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Button x:Name="button" Content="Back" HorizontalAlignment="Left" Margin="20,30,0,0" VerticalAlignment="Top" Click="button_Click"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="20,67,0,0" TextWrapping="Wrap" Text="Mlijeko" VerticalAlignment="Top" FontSize="26.667"/>
+        <Image x:Name="image" HorizontalAlignment="Left" Height="423" Margin="70,107,0,0" VerticalAlignment="Top" Width="204" Source="ms-appx:///Assets/Screenshot_2.png"/>
+
+    </Grid>
+</Page>

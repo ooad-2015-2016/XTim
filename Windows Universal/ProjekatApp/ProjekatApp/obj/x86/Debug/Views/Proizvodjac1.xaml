@@ -1,0 +1,19 @@
+﻿<Page
+    x:Class="ProjekatApp.Views.Proizvodjac1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ProjekatApp.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Button x:ConnectionId='1' x:Name="button" Content="Back" HorizontalAlignment="Left" Margin="20,30,0,0" VerticalAlignment="Top"                     />
+        <TextBlock x:ConnectionId='2' x:Name="textBlock" HorizontalAlignment="Left" Margin="20,67,0,0" TextWrapping="Wrap" Text="Milkos" VerticalAlignment="Top" FontSize="26.667"/>
+        <Image x:ConnectionId='3' x:Name="image" HorizontalAlignment="Left" Height="190" Margin="20,107,0,0" VerticalAlignment="Top" Width="271" Source="ms-appx:///Assets/image1.jpg"/>
+        <TextBlock x:ConnectionId='4' x:Name="textBlock1" HorizontalAlignment="Left" Margin="1,302,0,0" TextWrapping="Wrap" Text="Sarajevska mljekara Milkos osnovana je 1953g. i najstariji je prerađivač mlijeka i mliječnih prerađevina u BiH. Mljekara je izgradjena donacijom UNICEF-a i bila je predviđena kao pomoć djeci Sarajeva u poslijeratnim danima izgradnje zemlje. Osnovana je kao samostalno preduzeće, zatim je bila u sastavu IPK Sarajevo, a dugi niz godina je članica poslovnog sistema UPI Sarajevo.
+U septembru 2004 godine kompanija Teloptic d.o.o. Sarajevo je kupila dionice Milkosa koje su bile u vlasništvu države i tako postala većinski vlasnik Mljekare." VerticalAlignment="Top"/>
+
+    </Grid>
+</Page>
+
